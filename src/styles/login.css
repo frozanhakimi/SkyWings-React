@@ -1,0 +1,326 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f6f8;
+    overflow: auto;
+}
+
+
+/* =========================
+   Hero
+========================= */
+.hero {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    padding-top: 80px;
+    margin-bottom: 205px;
+
+    background:
+        linear-gradient(
+            rgba(35, 20, 70, 0.35),
+            rgba(20, 30, 80, 0.35)
+        ),
+        url('/images/IMG-20260909-WA0000.jpg')
+        center / cover;
+}
+
+/* =========================
+   Title
+========================= */
+
+.hero-content {
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 14px;
+}
+
+
+/* =========================
+   Login Card
+========================= */
+
+.login-card {
+    width: 375px;
+    min-height: 420px;
+
+    background: white;
+
+    position: absolute;
+    left: 50%;
+    top: 185px;
+
+    transform: translateX(-50%);
+
+    border-radius: 15px;
+
+    padding: 25px 20px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.login-card h2 {
+    text-align: center;
+    color: #536174;
+    font-size: 18px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   Social Buttons
+========================= */
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin-bottom: 30px;
+}
+
+.social-btn {
+    width: 60px;
+    height: 50px;
+
+    border: 1px solid #eee;
+    background: white;
+
+    border-radius: 5px;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.facebook {
+    color: #1877f2;
+}
+
+.google {
+    color: #4285f4;
+}
+
+.social-btn i {
+    font-size: 20px;
+}
+
+
+/* =========================
+   Inputs
+========================= */
+
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    height: 36px;
+
+    border: 1px solid #ddd;
+    border-radius: 7px;
+
+    padding: 0 12px;
+
+    margin-bottom: 12px;
+
+    outline: none;
+}
+
+form input:focus {
+    border-color: #9c00ff;
+}
+
+form input::placeholder {
+    color: #b8bdc5;
+}
+
+
+/* =========================
+   Sign In
+========================= */
+
+.sign-in {
+    width: 100%;
+    height: 35px;
+
+    border: none;
+    border-radius: 6px;
+
+    color: white;
+
+    font-weight: bold;
+    font-size: 11px;
+
+    background: linear-gradient(
+        90deg,
+        #ec008c,
+        #9c00ff
+    );
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   Options
+========================= */
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 8px;
+
+    font-size: 11px;
+    color: #aaa;
+}
+
+.options a {
+    color: #999;
+    text-decoration: none;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.options input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+
+/* =========================
+   OR
+========================= */
+
+.or {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin: 20px 0;
+}
+
+.or::before,
+.or::after {
+    content: "";
+
+    height: 1px;
+
+    background: #eee;
+
+    flex: 1;
+}
+
+.or span {
+    color: #aaa;
+    font-size: 12px;
+}
+
+
+/* =========================
+   Sign Up
+========================= */
+
+.sign-up {
+    width: 100%;
+    height: 35px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: linear-gradient(
+        90deg,
+        #27c8e8,
+        #2769ed
+    );
+
+    color: white;
+
+    font-weight: bold;
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+    min-height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 35px;
+
+    padding: 20px;
+}
+
+footer a {
+    text-decoration: none;
+
+    color: #9da5b0;
+
+    font-size: 14px;
+}
+
+footer a:hover {
+    color: #536174;
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        height: 400px;
+        margin-bottom: 230px;
+    }
+    .login-card {
+        width: 90%;
+        max-width: 375px;
+    }
+
+    .hero-content h1 {
+        font-size: 30px;
+    }
+
+    .hero-content p {
+        font-size: 13px;
+        padding: 0 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
