@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-
+import Topbar from '../components/Topbar';
 
 const initialBookings = [
   { id: 'SKW-12345', from: 'Kabul (KBL)', to: 'Dubai (DXB)', fromCode: 'KBL', toCode: 'DXB', fromCity: 'Kabul', toCity: 'Dubai', date: '15 Oct 2024', time: '08:00 AM', passenger: 'Frozan Hakimi', status: 'confirmed', tab: 'upcoming' },
@@ -16,6 +16,8 @@ function Booking() {
   const [activeTab, setActiveTab] = useState('upcoming');
   const [bookings, setBookings] = useState(initialBookings);
   const [selectedBooking, setSelectedBooking] = useState(null);
+  const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const filteredBookings = bookings.filter((b) => b.tab === activeTab);
 
@@ -31,9 +33,22 @@ function Booking() {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar collapsed={collapsed} mobileOpen={mobileOpen} />
+
+<button
+  className="sidebar-toggle"
+  onClick={() => setCollapsed(!collapsed)}
+>
+  ‹
+</button>
+
+<div
+  className={`sidebar-overlay ${mobileOpen ? 'show' : ''}`}
+  onClick={() => setMobileOpen(false)}
+></div>
 
       <main className="main-content">
+       <Topbar pageTitle="Bookings" onMenuClick={() => setMobileOpen(true)} />
         {/* HERO */}
         <div className="page-hero">
           <div className="page-hero-content">
