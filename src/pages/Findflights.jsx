@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-
+import Topbar from '../components/Topbar';
 
 const flights = [
   { id: 1, airline: 'Qatar Airways', from: 'KBL', to: 'DXB', fromTime: '08:00', toTime: '10:30', duration: '2h 30m', stops: 'Direct', price: 450 },
@@ -14,12 +14,27 @@ const flights = [
 function Findflights() {
   const [activeTab, setActiveTab] = useState('list-view');
   const [selectedFlight, setSelectedFlight] = useState(null);
+  const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <>
-      <Sidebar />
+      <Sidebar collapsed={collapsed} mobileOpen={mobileOpen} />
+
+<button
+  className="sidebar-toggle"
+  onClick={() => setCollapsed(!collapsed)}
+>
+  ‹
+</button>
+
+<div
+  className={`sidebar-overlay ${mobileOpen ? 'show' : ''}`}
+  onClick={() => setMobileOpen(false)}
+></div>
 
       <main className="main-content">
+         <Topbar pageTitle="Find Flights" onMenuClick={() => setMobileOpen(true)} />
         {/* HERO BANNER */}
         <div className="page-hero">
           <div className="page-hero-content">
