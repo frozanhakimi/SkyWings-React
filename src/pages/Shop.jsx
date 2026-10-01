@@ -70,6 +70,8 @@ function Shop() {
   const [searchText, setSearchText] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [entriesPerPage] = useState(6);
+  const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const filteredProducts = products.filter((p) =>
     p.name.toLowerCase().includes(searchText.toLowerCase())
@@ -82,11 +84,22 @@ function Shop() {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar collapsed={collapsed} mobileOpen={mobileOpen} />
+
+<button
+  className="sidebar-toggle"
+  onClick={() => setCollapsed(!collapsed)}
+>
+  ‹
+</button>
+
+<div
+  className={`sidebar-overlay ${mobileOpen ? 'show' : ''}`}
+  onClick={() => setMobileOpen(false)}
+></div>
 
       <main className="main-content">
-        <Topbar pageTitle="Shop" />
-
+       <Topbar pageTitle="Shop" onMenuClick={() => setMobileOpen(true)} />
         {/* Hero Banner */}
         <div className="page-hero">
           <div className="page-hero-content">
