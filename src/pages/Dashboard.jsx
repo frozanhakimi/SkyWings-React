@@ -30,7 +30,7 @@ function Dashboard() {
           pageTitle="Dashboard"
           onMenuClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
         />
-<h1 className="welcome-title">Welcome to SkyWings Airlines!</h1>
+       <h1 className="welcome-title">Welcome to SkyWings Airlines!</h1>
 
         <div className="dashboard-grid">
           {/* Card 1 - Flight Promotions */}
