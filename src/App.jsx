@@ -3,6 +3,8 @@ import Dashboard from './pages/Dashboard';
 import Findflights from './pages/Findflights';
 import Booking from './pages/Booking';
 import Shop from './pages/Shop';
+import Destinations from './pages/Destinations';  
+import Profile from './pages/Profile';  
 import Login from './pages/Login';
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
         <Route path="/find-flights" element={<Findflights />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/destinations" element={<Destinations />} />     
+        <Route path="/profile" element={<Profile />} />                
         <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
