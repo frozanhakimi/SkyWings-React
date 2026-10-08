@@ -1,36 +1,63 @@
 import { useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import Topbar from '../components/Topbar';
+import DonutChart from '../components/DonutChart';
 
 function Dashboard() {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Card 1 - Flight Promotions
+  const promotionsData = {
+    labels: ['Qatar Airways', 'Emirates', 'Turkish Airlines', 'Lufthansa', 'Singapore Airlines'],
+    values: [24, 18, 15, 12, 9],
+    colors: ['#e11d48', '#3b82f6', '#10b981', '#eab308', '#d946ef'],
+  };
+
+  // Card 2 - Booking Overview
+  const bookingData = {
+    labels: ['Business Class', 'Economy Class', 'First Class', 'Premium Economy'],
+    values: [35, 40, 15, 10],
+    colors: ['#1e3a8a', '#3b82f6', '#10b981', '#e11d48'],
+  };
+
+  // Card 3 - Smart Market Usage
+  const marketData = {
+    labels: [
+      'Seat Occupancy Rate',
+      'Customer Satisfaction',
+      'Online Check-in Rate',
+      'In-flight Wifi Usage',
+      'Extra Baggage Sales',
+    ],
+    values: [87, 94, 76, 68, 42],
+    colors: ['#1e3a8a', '#3b82f6', '#10b981', '#eab308', '#e11d48'],
+  };
 
   return (
     <>
-      <Sidebar
-        collapsed={sidebarCollapsed}
-        mobileOpen={mobileSidebarOpen}
-      />
-
-      <div
-        className={`sidebar-overlay ${mobileSidebarOpen ? 'show' : ''}`}
-        onClick={() => setMobileSidebarOpen(false)}
-      ></div>
+      <Sidebar collapsed={collapsed} mobileOpen={mobileOpen} />
 
       <button
         className="sidebar-toggle"
-        onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+        onClick={() => setCollapsed(!collapsed)}
+        aria-label="Toggle sidebar"
       >
         ‹
       </button>
 
+      <div
+        className={`sidebar-overlay ${mobileOpen ? 'show' : ''}`}
+        onClick={() => setMobileOpen(false)}
+      ></div>
+
       <main className="main-content">
         <Topbar
           pageTitle="Dashboard"
-          onMenuClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
+          onMenuClick={() => setMobileOpen(true)}
         />
-       <h1 className="welcome-title">Welcome to SkyWings Airlines!</h1>
+
+        <h1 className="welcome-title">Welcome to SkyWings Airlines!</h1>
 
         <div className="dashboard-grid">
           {/* Card 1 - Flight Promotions */}
@@ -41,14 +68,23 @@ function Dashboard() {
             </div>
             <div className="card-content chart-layout">
               <div className="graph-placeholder">
-                <img src="/images/flight_promotions_donut.png" alt="Promotion Graph" />
+                <DonutChart
+                  labels={promotionsData.labels}
+                  values={promotionsData.values}
+                  colors={promotionsData.colors}
+                />
               </div>
               <div className="chart-legend">
-                <div className="legend-item"><span className="dot" style={{ background: '#e11d48' }}></span> Qatar Airways <span className="pct">24%</span></div>
-                <div className="legend-item"><span className="dot" style={{ background: '#3b82f6' }}></span> Emirates <span className="pct">18%</span></div>
-                <div className="legend-item"><span className="dot" style={{ background: '#10b981' }}></span> Turkish Airlines <span className="pct">15%</span></div>
-                <div className="legend-item"><span className="dot" style={{ background: '#eab308' }}></span> Lufthansa <span className="pct">12%</span></div>
-                <div className="legend-item"><span className="dot" style={{ background: '#d946ef' }}></span> Singapore Airlines <span className="pct">9%</span></div>
+                {promotionsData.labels.map((label, i) => (
+                  <div className="legend-item" key={i}>
+                    <span
+                      className="dot"
+                      style={{ background: promotionsData.colors[i] }}
+                    ></span>
+                    {label}
+                    <span className="pct">{promotionsData.values[i]}%</span>
+                  </div>
+                ))}
               </div>
             </div>
             <button className="btn-blue">More Details</button>
@@ -62,13 +98,23 @@ function Dashboard() {
             </div>
             <div className="card-content chart-layout">
               <div className="graph-placeholder">
-                <img src="/images/booking_overview_donut.png" alt="Booking Graph" />
+                <DonutChart
+                  labels={bookingData.labels}
+                  values={bookingData.values}
+                  colors={bookingData.colors}
+                />
               </div>
               <div className="chart-legend">
-                <div className="legend-item"><span className="dot" style={{ background: '#1e3a8a' }}></span> Business Class <span className="pct">35%</span></div>
-                <div className="legend-item"><span className="dot" style={{ background: '#3b82f6' }}></span> Economy Class <span className="pct">40%</span></div>
-                <div className="legend-item"><span className="dot" style={{ background: '#10b981' }}></span> First Class <span className="pct">15%</span></div>
-                <div className="legend-item"><span className="dot" style={{ background: '#e11d48' }}></span> Premium Economy <span className="pct">10%</span></div>
+                {bookingData.labels.map((label, i) => (
+                  <div className="legend-item" key={i}>
+                    <span
+                      className="dot"
+                      style={{ background: bookingData.colors[i] }}
+                    ></span>
+                    {label}
+                    <span className="pct">{bookingData.values[i]}%</span>
+                  </div>
+                ))}
               </div>
             </div>
             <button className="btn-blue">More Details</button>
@@ -82,14 +128,23 @@ function Dashboard() {
             </div>
             <div className="card-content chart-layout">
               <div className="graph-placeholder">
-                <img src="/images/smart_market_usage_donut.png" alt="Market Graph" />
+                <DonutChart
+                  labels={marketData.labels}
+                  values={marketData.values}
+                  colors={marketData.colors}
+                />
               </div>
               <div className="chart-legend">
-                <div className="legend-item"><span className="dot" style={{ background: '#1e3a8a' }}></span> Seat Occupancy Rate <span className="pct">87%</span></div>
-                <div className="legend-item"><span className="dot" style={{ background: '#3b82f6' }}></span> Customer Satisfaction <span className="pct">94%</span></div>
-                <div className="legend-item"><span className="dot" style={{ background: '#10b981' }}></span> Online Check-in Rate <span className="pct">76%</span></div>
-                <div className="legend-item"><span className="dot" style={{ background: '#eab308' }}></span> In-flight Wifi Usage <span className="pct">68%</span></div>
-                <div className="legend-item"><span className="dot" style={{ background: '#e11d48' }}></span> Extra Baggage Sales <span className="pct">42%</span></div>
+                {marketData.labels.map((label, i) => (
+                  <div className="legend-item" key={i}>
+                    <span
+                      className="dot"
+                      style={{ background: marketData.colors[i] }}
+                    ></span>
+                    {label}
+                    <span className="pct">{marketData.values[i]}%</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -125,7 +180,9 @@ function Dashboard() {
                 <div className="progress-fill" style={{ width: '10%' }}></div>
               </div>
 
-              <button className="btn-blue" style={{ marginTop: '20px' }}>More Details</button>
+              <button className="btn-blue" style={{ marginTop: '20px' }}>
+                More Details
+              </button>
             </div>
           </div>
         </div>
