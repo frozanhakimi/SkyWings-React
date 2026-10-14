@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import Topbar from '../components/Topbar';
+import Topbar from '../components/topbar';
 
 const flights = [
   { id: 1, airline: 'Qatar Airways', from: 'KBL', to: 'DXB', fromTime: '08:00', toTime: '10:30', duration: '2h 30m', stops: 'Direct', price: 450 },

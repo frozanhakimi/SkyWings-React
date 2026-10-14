@@ -1,7 +1,8 @@
 
 import { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import Topbar from '../components/Topbar';
+import Topbar from '../components/topbar';
+
 
 const initialBookings = [
   { id: 'SKW-12345', from: 'Kabul (KBL)', to: 'Dubai (DXB)', fromCode: 'KBL', toCode: 'DXB', fromCity: 'Kabul', toCity: 'Dubai', date: '15 Oct 2024', time: '08:00 AM', passenger: 'Frozan Hakimi', status: 'confirmed', tab: 'upcoming' },

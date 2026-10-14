@@ -57,7 +57,7 @@ function Login() {
   };
 
   return (
-    <>
+    <div className="login-page-container">
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
@@ -145,7 +145,7 @@ function Login() {
         <a href="#">About Us</a>
         <a href="#">Our Blog</a>
       </footer>
-    </>
+    </div>
   );
 }
 
