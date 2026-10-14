@@ -1,236 +1,262 @@
+/* =========================================
+   GLOBAL RESET
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* =========================================
+   HTML, BODY
+   ========================================= */
+html {
+    height: 100%;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background: #f5f6f8;
+    background: #ffffff;
+    min-height: 100vh;
     overflow: auto;
 }
 
+/* =========================================
+   LOGIN PAGE CONTAINER
+   ========================================= */
+.login-page-container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 5000;
+}
 
-/* =========================
-   Hero
-========================= */
+/* =========================================
+   HERO
+   ========================================= */
 .hero {
     width: 100%;
-    height: 400px;
+    flex-shrink: 0;
     position: relative;
-    padding-top: 80px;
-    margin-bottom: 205px;
+    padding: 60px 20px 40px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
     background:
         linear-gradient(
             rgba(35, 20, 70, 0.35),
             rgba(20, 30, 80, 0.35)
         ),
         url('/images/IMG-20260909-WA0000.jpg')
-        center / cover;
+        center / cover no-repeat;
+    z-index: 0;
 }
 
-/* =========================
-   Title
-========================= */
-
+/* =========================================
+   HERO CONTENT
+   ========================================= */
 .hero-content {
+    position: relative;
+    z-index: 1;
     text-align: center;
     color: white;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 600px;
 }
 
 .hero-content h1 {
     font-size: 38px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .hero-content p {
     font-size: 14px;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 }
 
-
-/* =========================
-   Login Card
-========================= */
-
+/* =========================================
+   LOGIN CARD
+   ========================================= */
 .login-card {
+    position: relative;
+    z-index: 2;
     width: 375px;
-    min-height: 420px;
-
-    background: white;
-
-    position: absolute;
-    left: 50%;
-    top: 185px;
-
-    transform: translateX(-50%);
-
+    max-width: 90%;
+    background: #ffffff;
+    margin: 0 auto;
     border-radius: 15px;
-
-    padding: 25px 20px;
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    padding: 30px 25px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
 
 .login-card h2 {
     text-align: center;
     color: #536174;
     font-size: 18px;
-
     margin-bottom: 25px;
+    font-weight: 600;
 }
 
-
-/* =========================
-   Social Buttons
-========================= */
-
+/* =========================================
+   SOCIAL BUTTONS
+   ========================================= */
 .social-buttons {
     display: flex;
     justify-content: center;
-    gap: 10px;
-
-    margin-bottom: 30px;
+    gap: 12px;
+    margin-bottom: 25px;
 }
 
 .social-btn {
     width: 60px;
     height: 50px;
-
-    border: 1px solid #eee;
+    border: 1px solid #e5e7eb;
     background: white;
-
-    border-radius: 5px;
-
-    font-size: 20px;
-
+    border-radius: 8px;
     cursor: pointer;
-
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.3s;
+    font-size: 20px;
 }
 
-.facebook {
-    color: #1877f2;
+.social-btn:hover {
+    background: #f9fafb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.google {
-    color: #4285f4;
-}
+.facebook { color: #1877f2; }
+.google { color: #4285f4; }
 
 .social-btn i {
     font-size: 20px;
 }
 
-
-/* =========================
-   Inputs
-========================= */
-
+/* =========================================
+   INPUTS
+   ========================================= */
 form input[type="text"],
 form input[type="password"] {
     width: 100%;
-    height: 36px;
-
-    border: 1px solid #ddd;
-    border-radius: 7px;
-
-    padding: 0 12px;
-
+    height: 42px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0 14px;
     margin-bottom: 12px;
-
     outline: none;
+    font-size: 14px;
+    font-family: inherit;
+    transition: 0.3s;
+    background: #f9fafb;
 }
 
 form input:focus {
     border-color: #9c00ff;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(156, 0, 255, 0.1);
 }
 
 form input::placeholder {
     color: #b8bdc5;
 }
 
-
-/* =========================
-   Sign In
-========================= */
-
+/* =========================================
+   SIGN IN BUTTON
+   ========================================= */
 .sign-in {
     width: 100%;
-    height: 35px;
-
+    height: 42px;
     border: none;
-    border-radius: 6px;
-
+    border-radius: 8px;
     color: white;
-
     font-weight: bold;
-    font-size: 11px;
-
-    background: linear-gradient(
-        90deg,
-        #ec008c,
-        #9c00ff
-    );
-
+    font-size: 12px;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #ec008c, #9c00ff);
     cursor: pointer;
+    transition: 0.3s;
+    font-family: inherit;
+    margin-top: 5px;
 }
 
+.sign-in:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(156, 0, 255, 0.35);
+}
 
-/* =========================
-   Options
-========================= */
-
+/* =========================================
+   OPTIONS
+   ========================================= */
 .options {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    margin-top: 8px;
-
+    margin-top: 12px;
     font-size: 11px;
     color: #aaa;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .options a {
     color: #999;
     text-decoration: none;
+    transition: 0.3s;
+}
+
+.options a:hover {
+    color: #9c00ff;
 }
 
 .options label {
     display: flex;
     align-items: center;
     gap: 5px;
+    cursor: pointer;
 }
 
 .options input[type="checkbox"] {
     width: auto;
     height: auto;
     margin: 0;
+    cursor: pointer;
 }
 
-
-/* =========================
-   OR
-========================= */
-
+/* =========================================
+   OR DIVIDER
+   ========================================= */
 .or {
     display: flex;
     align-items: center;
     gap: 10px;
-
     margin: 20px 0;
 }
 
 .or::before,
 .or::after {
     content: "";
-
     height: 1px;
-
     background: #eee;
-
     flex: 1;
 }
 
@@ -239,88 +265,113 @@ form input::placeholder {
     font-size: 12px;
 }
 
-
-/* =========================
-   Sign Up
-========================= */
-
+/* =========================================
+   LOG IN BUTTON
+   ========================================= */
 .sign-up {
     width: 100%;
-    height: 35px;
-
+    height: 42px;
     border: none;
-    border-radius: 6px;
-
-    background: linear-gradient(
-        90deg,
-        #27c8e8,
-        #2769ed
-    );
-
+    border-radius: 8px;
+    background: linear-gradient(90deg, #27c8e8, #2769ed);
     color: white;
-
     font-weight: bold;
-    font-size: 11px;
-
+    font-size: 12px;
+    letter-spacing: 1px;
     cursor: pointer;
+    transition: 0.3s;
+    font-family: inherit;
 }
 
+.sign-up:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(39, 105, 237, 0.35);
+}
 
-/* =========================
-   Footer
-========================= */
-
+/* =========================================
+   FOOTER
+   ========================================= */
 footer {
-    min-height: 100px;
-
+    position: relative;
+    z-index: 3;
     display: flex;
     justify-content: center;
     align-items: center;
-
     gap: 35px;
-
-    padding: 20px;
+    padding: 30px 20px;
+    flex-wrap: wrap;
+    background: #ffffff;
+    flex-shrink: 0;
+    margin-top: auto;
 }
 
 footer a {
     text-decoration: none;
-
     color: #9da5b0;
-
     font-size: 14px;
+    transition: 0.3s;
 }
 
 footer a:hover {
     color: #536174;
 }
 
-
-/* =========================
-   Mobile
-========================= */
-
-@media (max-width: 600px) {
-
+/* =========================================
+   RESPONSIVE - Tablet
+   ========================================= */
+@media (max-width: 768px) {
     .hero {
-        height: 400px;
-        margin-bottom: 230px;
+        padding: 50px 15px 30px;
+    }
+    .hero::before {
+        height: 50%;
+    }
+    .hero-content h1 {
+        font-size: 28px;
+    }
+    .hero-content p {
+        font-size: 13px;
     }
     .login-card {
         width: 90%;
-        max-width: 375px;
+        padding: 25px 20px;
     }
+}
 
+/* =========================================
+   RESPONSIVE - Mobile
+   ========================================= */
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 12px 20px;
+    }
     .hero-content h1 {
-        font-size: 30px;
+        font-size: 22px;
     }
-
     .hero-content p {
-        font-size: 13px;
-        padding: 0 20px;
+        font-size: 12px;
+        padding: 0 10px;
     }
-
+    .login-card {
+        width: 95%;
+        padding: 22px 16px;
+    }
+    .login-card h2 {
+        font-size: 16px;
+    }
+    .social-btn {
+        width: 55px;
+        height: 45px;
+    }
+    .options {
+        font-size: 10px;
+    }
     footer {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
+        padding: 20px 15px;
+    }
+    footer a {
+        font-size: 13px;
     }
 }
