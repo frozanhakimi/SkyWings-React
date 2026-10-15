@@ -4639,3 +4639,96 @@ body {
         grid-template-columns: 1fr;
         gap: 12px;
     }
+    .plans-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .plan-card {
+        padding: 20px;
+    }
+    .profile-buttons {
+        flex-direction: column-reverse;
+    }
+    .profile-buttons button {
+        width: 100%;
+        margin: 0;
+    }
+
+    /* DESTINATIONS */
+    .pharmacy-cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+    }
+    .pharmacy-product-card {
+        padding: 12px;
+    }
+    .pharmacy-product-image {
+        height: 110px;
+    }
+    .pharmacy-product-name {
+        font-size: 14px;
+    }
+    .pharmacy-product-price {
+        font-size: 14px;
+    }
+
+    /* FLIGHTS PAGE */
+    .flight-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .flight-stat-card {
+        padding: 15px;
+        gap: 10px;
+    }
+    .stat-icon-wrap {
+        width: 40px;
+        height: 40px;
+    }
+    .flight-stat-card h4 {
+        font-size: 20px;
+    }
+    .flight-stat-card p {
+        font-size: 11px;
+    }
+    .flight-filters {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    /* SAFETY */
+    .safety-hero-new {
+        grid-template-columns: 1fr;
+        padding: 22px 18px;
+        text-align: center;
+        gap: 20px;
+    }
+    .safety-hero-new h1 {
+        font-size: 22px;
+    }
+    .safety-badges-row {
+        justify-content: center;
+        gap: 8px;
+    }
+    .safety-badge-item {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+    .score-gauge-wrapper svg {
+        width: 140px;
+        height: 140px;
+    }
+    .safety-metrics-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .metrics-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .metric-card {
+        padding: 14px;
+    }
+    .radar-chart-wrapper {
+        height: 240px;
+    }
