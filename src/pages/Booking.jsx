@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import Topbar from '../components/topbar';
+import Topbar from '../components/Topbar';
 
 
 const initialBookings = [

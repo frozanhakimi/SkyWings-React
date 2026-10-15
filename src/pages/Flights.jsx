@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
-import Topbar from '../components/topbar';
+import Topbar from '../components/Topbar';
 import AirlineLogo from '../components/AirlineLogo';
 
 const allFlights = [
