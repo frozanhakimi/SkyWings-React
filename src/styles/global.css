@@ -4527,3 +4527,115 @@ body {
         width: 100%;
         justify-content: space-between;
     }
+    .flight-price {
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .flight-price span {
+        font-size: 20px;
+    }
+
+    /* TABS */
+    .view-tabs {
+        width: 100%;
+        overflow-x: auto;
+        padding: 6px;
+    }
+    .tab-btn {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+
+    /* BOOKING CARDS */
+    .booking-card {
+        padding: 15px;
+    }
+    .booking-body {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .booking-actions {
+        width: 100%;
+    }
+    .booking-actions button {
+        flex: 1;
+    }
+
+    /* PANELS */
+    .ticket-panel,
+    .booking-panel {
+        left: 50%;
+        right: auto;
+        top: 50%;
+        width: 92%;
+        max-width: 380px;
+        max-height: 88vh;
+        transform: translate(-50%, -200%);
+    }
+    .ticket-panel.show,
+    .booking-panel.show {
+        transform: translate(-50%, -50%);
+    }
+
+    /* TABLES */
+    .pharmacy-table-container,
+    .shop-table-section {
+        padding: 15px;
+        border-radius: 12px;
+    }
+    .pharmacy-section-title {
+        font-size: 16px;
+    }
+    .pharmacy-table-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .entries-control {
+        justify-content: flex-start;
+    }
+    .search-control input {
+        width: 100%;
+    }
+    .pharmacy-table,
+    .shop-table {
+        font-size: 11px;
+        min-width: 650px;
+    }
+    .pharmacy-table th,
+    .pharmacy-table td,
+    .shop-table th,
+    .shop-table td {
+        padding: 10px 8px;
+        font-size: 11px;
+    }
+    .pharmacy-table-pagination {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* PROFILE */
+    .profile-container {
+        padding: 20px 15px;
+        border-radius: 16px;
+    }
+    .profile-steps-bar {
+        padding: 0;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+    .profile-steps-bar::before {
+        display: none;
+    }
+    .profile-step {
+        flex: 0 0 45%;
+        margin-bottom: 15px;
+    }
+    .profile-form-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
