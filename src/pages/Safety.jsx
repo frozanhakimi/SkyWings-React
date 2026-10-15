@@ -10,7 +10,7 @@ import {
   Legend,
 } from 'chart.js';
 import Sidebar from '../components/Sidebar';
-import Topbar from '../components/topbar';
+import Topbar from '../components/Topbar';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
