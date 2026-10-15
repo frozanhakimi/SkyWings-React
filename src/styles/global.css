@@ -4435,3 +4435,95 @@ body {
         visibility: hidden;
         transition: opacity 0.35s ease;
     }
+     .sidebar-overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* MAIN CONTENT */
+    .main-content {
+        padding: 15px;
+    }
+
+    /* TOPBAR */
+    .topbar {
+        padding: 12px 15px;
+        gap: 10px;
+    }
+    .search-box {
+        display: none;
+    }
+    .page-title {
+        font-size: 13px;
+    }
+    .login-btn {
+        padding: 7px 14px;
+        font-size: 12px;
+    }
+    .user-actions svg {
+        width: 18px;
+        height: 18px;
+    }
+    .welcome-title {
+        font-size: 22px;
+    }
+
+    /* DASHBOARD */
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .card {
+        padding: 15px;
+    }
+    .card-title {
+        font-size: 15px;
+    }
+    .chart-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .graph-placeholder {
+        width: 140px;
+        height: 140px;
+    }
+    .chart-legend {
+        width: 100%;
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+        padding: 25px 20px;
+    }
+    .page-hero h2 {
+        font-size: 22px;
+    }
+    .page-hero p {
+        font-size: 13px;
+    }
+    .hero-search-form {
+        flex-direction: column;
+    }
+    .hero-search-form input,
+    .hero-search-form select,
+    .hero-search-form .btn-search {
+        width: 100%;
+    }
+
+    /* FLIGHT CARDS */
+    .flight-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px;
+        gap: 15px;
+    }
+    .flight-airline {
+        min-width: auto;
+    }
+    .flight-route {
+        width: 100%;
+        justify-content: space-between;
+    }
