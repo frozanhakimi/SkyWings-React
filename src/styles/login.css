@@ -1,0 +1,50 @@
+/* =========================================
+   LOGIN PAGE — Mirrors Signup Design
+   ========================================= */
+
+/* Import shared styles from signup.css */
+@import url('./signup.css');
+
+/* =========================================
+   LOGIN-SPECIFIC STYLES
+   ========================================= */
+
+/* remember me */
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: -4px;
+}
+
+.forgot-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.forgot-link:hover {
+    color: #1e3a8a;
+    text-decoration: underline;
+}
+
+/* sing up */
+.signup-branding h1 {
+    font-size: 52px;
+}
+
+@media (max-width: 1024px) {
+    .signup-branding h1 {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 640px) {
+    .signup-branding h1 {
+        font-size: 30px;
+    }
+}
