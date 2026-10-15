@@ -4732,3 +4732,116 @@ body {
     .radar-chart-wrapper {
         height: 240px;
     }
+    .safety-two-col {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .session-card {
+        flex-wrap: wrap;
+        padding: 14px;
+    }
+    .session-info {
+        flex-basis: 100%;
+        order: 3;
+    }
+    .verify-code-row {
+        flex-direction: column;
+    }
+    .verify-code-row input {
+        letter-spacing: 5px;
+        font-size: 14px;
+    }
+    .privacy-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* SKYMILES */
+    .skymiles-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .loyalty-card {
+        padding: 22px 18px;
+        min-height: 240px;
+    }
+    .miles-number {
+        font-size: 40px;
+    }
+    .saved-cards-grid,
+    .billing-profiles-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .saved-card {
+        padding: 18px;
+    }
+    .billing-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+    }
+    .billing-value {
+        text-align: left;
+    }
+    .skymiles-summary {
+        grid-template-columns: 1fr;
+    }
+    .summary-card {
+        flex-direction: row;
+        text-align: left;
+    }
+    .summary-info {
+        align-items: flex-start;
+    }
+
+    /* LIVE FLIGHTS */
+    .live-hero {
+        padding: 22px 18px;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    .live-hero h1 {
+        font-size: 22px;
+    }
+    .live-stats-row {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+    .live-stat-badge {
+        flex: 1;
+        min-width: 90px;
+        padding: 10px 12px;
+        gap: 8px;
+    }
+    .live-stat-badge strong {
+        font-size: 18px;
+    }
+    .live-stat-badge span {
+        font-size: 10px;
+    }
+    .live-map-container {
+        padding: 15px;
+    }
+    .live-map-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .live-map-legend {
+        font-size: 11px;
+        gap: 12px;
+    }
+    .world-map-wrapper {
+        padding: 10px;
+    }
+    .live-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .live-flight-card {
+        padding: 15px;
+    }
