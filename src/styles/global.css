@@ -4845,3 +4845,96 @@ body {
     .live-flight-card {
         padding: 15px;
     }
+     .live-flight-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    .live-stat {
+        padding: 6px;
+    }
+    .live-stat-label {
+        font-size: 8px;
+    }
+    .live-stat-value {
+        font-size: 11px;
+    }
+    .notification-row {
+        padding: 12px 14px;
+        gap: 12px;
+    }
+    .notification-icon {
+        font-size: 18px;
+    }
+    .notification-content p {
+        font-size: 12px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE — SMALL MOBILE (480px)
+   ========================================= */
+@media (max-width: 480px) {
+    .main-content {
+        padding: 12px;
+    }
+    .topbar {
+        padding: 10px 12px;
+    }
+    .welcome-title {
+        font-size: 20px;
+    }
+    .page-hero h2 {
+        font-size: 20px;
+    }
+    .page-hero {
+        padding: 20px 15px;
+    }
+    .card-title {
+        font-size: 14px;
+    }
+    .graph-placeholder {
+        width: 120px;
+        height: 120px;
+    }
+    .chart-legend {
+        font-size: 11px;
+    }
+    .miles-number {
+        font-size: 32px;
+    }
+    .summary-value {
+        font-size: 18px;
+    }
+    .flight-stat-card h4 {
+        font-size: 18px;
+    }
+    .stat-icon-wrap {
+        width: 36px;
+        height: 36px;
+    }
+    .pharmacy-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    .live-stat-badge {
+        min-width: 70px;
+        padding: 8px 10px;
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+    .live-stat-badge strong {
+        font-size: 16px;
+    }
+    .live-stat-badge span {
+        font-size: 9px;
+    }
+    .live-flight-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .live-stat-label {
+        font-size: 7px;
+    }
+    .live-stat-value {
+        font-size: 10px;
+    }
+}
