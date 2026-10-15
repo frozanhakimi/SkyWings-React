@@ -2739,6 +2739,27 @@ body {
     font-size: 12px;
     line-height: 1.4;
 }
+.empty-state {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 60px 30px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.empty-state h3 {
+    color: #1e3a8a;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    color: #6b7280;
+    font-size: 14px;
+}
 
 /* =========================================
    SKYMILES PAGE

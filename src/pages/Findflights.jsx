@@ -1,14 +1,16 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Topbar from '../components/Topbar';
+import AirlineLogo from '../components/AirlineLogo';
 
 const flights = [
-  { id: 1, airline: 'Qatar Airways', from: 'KBL', to: 'DXB', fromTime: '08:00', toTime: '10:30', duration: '2h 30m', stops: 'Direct', price: 450 },
-  { id: 2, airline: 'Emirates', from: 'KBL', to: 'DXB', fromTime: '14:15', toTime: '17:15', duration: '3h 00m', stops: '1 Stop', price: 380 },
-  { id: 3, airline: 'Turkish Airlines', from: 'KBL', to: 'IST', fromTime: '09:30', toTime: '14:50', duration: '5h 20m', stops: '1 Stop', price: 520 },
-  { id: 4, airline: 'Lufthansa', from: 'KBL', to: 'FRA', fromTime: '11:45', toTime: '19:00', duration: '7h 15m', stops: '1 Stop', price: 680 },
-  { id: 5, airline: 'Singapore Airlines', from: 'KBL', to: 'SIN', fromTime: '23:00', toTime: '09:30', duration: '10h 30m', stops: '2 Stops', price: 890 },
-  { id: 6, airline: 'Flydubai', from: 'KBL', to: 'DXB', fromTime: '06:30', toTime: '09:15', duration: '2h 45m', stops: 'Direct', price: 340 },
+  { id: 1, airline: 'Qatar Airways', from: 'Kabul', to: 'Dubai', fromCode: 'KBL', toCode: 'DXB', fromTime: '08:00', toTime: '10:30', duration: '2h 30m', stops: 'Direct', price: 450 },
+  { id: 2, airline: 'Emirates', from: 'Kabul', to: 'Dubai', fromCode: 'KBL', toCode: 'DXB', fromTime: '14:15', toTime: '17:15', duration: '3h 00m', stops: '1 Stop', price: 380 },
+  { id: 3, airline: 'Turkish Airlines', from: 'Kabul', to: 'Istanbul', fromCode: 'KBL', toCode: 'IST', fromTime: '09:30', toTime: '14:50', duration: '5h 20m', stops: '1 Stop', price: 520 },
+  { id: 4, airline: 'Lufthansa', from: 'Kabul', to: 'Frankfurt', fromCode: 'KBL', toCode: 'FRA', fromTime: '11:45', toTime: '19:00', duration: '7h 15m', stops: '1 Stop', price: 680 },
+  { id: 5, airline: 'Singapore Airlines', from: 'Kabul', to: 'Singapore', fromCode: 'KBL', toCode: 'SIN', fromTime: '23:00', toTime: '09:30', duration: '10h 30m', stops: '2 Stops', price: 890 },
+  { id: 6, airline: 'Flydubai', from: 'Kabul', to: 'Dubai', fromCode: 'KBL', toCode: 'DXB', fromTime: '06:30', toTime: '09:15', duration: '2h 45m', stops: 'Direct', price: 340 },
 ];
 
 function Findflights() {
@@ -17,34 +19,71 @@ function Findflights() {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // ✅ Search states
+  const [searchFrom, setSearchFrom] = useState('');
+  const [searchTo, setSearchTo] = useState('');
+  const [searchDate, setSearchDate] = useState('');
+
+  const navigate = useNavigate();
+
+  // ✅ Filtered flights
+  const filteredFlights = flights.filter((flight) => {
+    const matchesFrom =
+      searchFrom === '' ||
+      flight.from.toLowerCase().includes(searchFrom.toLowerCase()) ||
+      flight.fromCode.toLowerCase().includes(searchFrom.toLowerCase());
+
+    const matchesTo =
+      searchTo === '' ||
+      flight.to.toLowerCase().includes(searchTo.toLowerCase()) ||
+      flight.toCode.toLowerCase().includes(searchTo.toLowerCase());
+
+    return matchesFrom && matchesTo;
+  });
+
   return (
     <>
       <Sidebar collapsed={collapsed} mobileOpen={mobileOpen} />
 
-<button
-  className="sidebar-toggle"
-  onClick={() => setCollapsed(!collapsed)}
->
-  ‹
-</button>
+      <button
+        className="sidebar-toggle"
+        onClick={() => setCollapsed(!collapsed)}
+        aria-label="Toggle sidebar"
+      >
+        ‹
+      </button>
 
-<div
-  className={`sidebar-overlay ${mobileOpen ? 'show' : ''}`}
-  onClick={() => setMobileOpen(false)}
-></div>
+      <div
+        className={`sidebar-overlay ${mobileOpen ? 'show' : ''}`}
+        onClick={() => setMobileOpen(false)}
+      ></div>
 
       <main className="main-content">
-         <Topbar pageTitle="Find Flights" onMenuClick={() => setMobileOpen(true)} />
+        <Topbar pageTitle="Find Flights" onMenuClick={() => setMobileOpen(true)} />
+
         {/* HERO BANNER */}
         <div className="page-hero">
           <div className="page-hero-content">
             <h2>Find Your Flight</h2>
             <p>Search flights and book your next journey with SkyWings Airlines</p>
-
             <div className="hero-search-form">
-              <input type="text" placeholder="From (e.g. Kabul)" />
-              <input type="text" placeholder="To (e.g. Dubai)" />
-              <input type="date" />
+              <input
+                type="text"
+                placeholder="From (e.g. Kabul)"
+                value={searchFrom}
+                onChange={(e) => setSearchFrom(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="To (e.g. Dubai)"
+                value={searchTo}
+                onChange={(e) => setSearchTo(e.target.value)}
+              />
+              <input
+                type="date"
+                value={searchDate}
+                onChange={(e) => setSearchDate(e.target.value)}
+              />
               <button className="btn-search">SEARCH</button>
             </div>
           </div>
@@ -58,7 +97,6 @@ function Findflights() {
           >
             List
           </button>
-
           <button
             className={`tab-btn ${activeTab === 'grid-view' ? 'active' : ''}`}
             onClick={() => setActiveTab('grid-view')}
@@ -67,42 +105,30 @@ function Findflights() {
           </button>
         </div>
 
-        {/* LIST VIEW */}
-        {activeTab === 'list-view' && (
-          <div className="view-content active">
-            {flights.map((flight) => (
-              <div className="flight-card" key={flight.id}>
+        {/* Empty State */}
+        {filteredFlights.length === 0 && (
+          <div className="empty-state">
+            <h3>No flights found</h3>
+            <p>Try changing your search criteria</p>
+          </div>
+        )}
 
+        {/* LIST VIEW */}
+        {activeTab === 'list-view' && filteredFlights.length > 0 && (
+          <div className="view-content active">
+            {filteredFlights.map((flight) => (
+              <div className="flight-card" key={flight.id}>
                 <div className="flight-airline">
-                  <img
-                    src="/images/logo.png"
-                    alt={flight.airline}
-                    className="airline-logo"
-                  />
+                  <AirlineLogo airline={flight.airline} size={42} />
                   <span>{flight.airline}</span>
                 </div>
-
                 <div className="flight-route">
-                  <div className="time">
-                    {flight.fromTime}
-                    <span>{flight.from}</span>
-                  </div>
-
-                  <div className="duration">
-                    {flight.duration}
-                    <div className="line"></div>
-                    {flight.stops}
-                  </div>
-
-                  <div className="time">
-                    {flight.toTime}
-                    <span>{flight.to}</span>
-                  </div>
+                  <div className="time">{flight.fromTime}<span>{flight.fromCode}</span></div>
+                  <div className="duration">{flight.duration}<div className="line"></div>{flight.stops}</div>
+                  <div className="time">{flight.toTime}<span>{flight.toCode}</span></div>
                 </div>
-
                 <div className="flight-price">
                   <span>${flight.price}</span>
-
                   <button
                     className="btn-blue book-flight"
                     onClick={() => setSelectedFlight(flight)}
@@ -110,56 +136,36 @@ function Findflights() {
                     BOOK
                   </button>
                 </div>
-
               </div>
             ))}
           </div>
         )}
 
         {/* GRID VIEW */}
-        {activeTab === 'grid-view' && (
+        {activeTab === 'grid-view' && filteredFlights.length > 0 && (
           <div className="view-content active">
             <div className="flight-grid">
-
-              {flights.map((flight) => (
+              {filteredFlights.map((flight) => (
                 <div className="flight-card-grid" key={flight.id}>
-
-                  <img
-                    src="/images/logo.png"
-                    alt={flight.airline}
-                    className="grid-logo"
-                  />
-
+                  <AirlineLogo airline={flight.airline} size={70} />
                   <h4>{flight.airline}</h4>
-
-                  <p className="route-text">
-                    {flight.from} → {flight.to}
-                  </p>
-
-                  <p className="grid-meta">
-                    {flight.fromTime} - {flight.toTime} | {flight.stops}
-                  </p>
-
-                  <p className="grid-price">
-                    ${flight.price}
-                  </p>
-
+                  <p className="route-text">{flight.from} ({flight.fromCode}) → {flight.to} ({flight.toCode})</p>
+                  <p className="grid-meta">{flight.fromTime} - {flight.toTime} | {flight.stops}</p>
+                  <p className="grid-price">${flight.price}</p>
                   <button
                     className="btn-blue book-flight"
                     onClick={() => setSelectedFlight(flight)}
                   >
                     BOOK NOW
                   </button>
-
                 </div>
               ))}
-
             </div>
           </div>
         )}
 
         <div className="footer">
-          © 2024 SkyWings Airlines . Privacy Policy | Terms | Contact
+          © 2026, made with ❤️ by SkyWings Airlines for a better travel.
         </div>
       </main>
 
@@ -170,12 +176,9 @@ function Findflights() {
             className="booking-overlay show"
             onClick={() => setSelectedFlight(null)}
           ></div>
-
           <div className="booking-panel show">
-
             <div className="panel-header">
               <h3>✈ BOOK FLIGHT</h3>
-
               <button
                 className="close-panel"
                 onClick={() => setSelectedFlight(null)}
@@ -185,63 +188,46 @@ function Findflights() {
             </div>
 
             <div className="panel-info">
-
               <div className="info-row">
                 <span className="label">Airline:</span>
-                <span className="value">
-                  {selectedFlight.airline}
-                </span>
+                <span className="value">{selectedFlight.airline}</span>
               </div>
-
               <div className="info-row">
                 <span className="label">Route:</span>
-                <span className="value">
-                  {selectedFlight.from} → {selectedFlight.to}
-                </span>
+                <span className="value">{selectedFlight.fromCode} → {selectedFlight.toCode}</span>
               </div>
-
               <div className="info-row">
                 <span className="label">Time:</span>
-                <span className="value">
-                  {selectedFlight.fromTime} - {selectedFlight.toTime}
-                </span>
+                <span className="value">{selectedFlight.fromTime} - {selectedFlight.toTime}</span>
               </div>
-
               <div className="info-row">
                 <span className="label">Class:</span>
                 <span className="value">Economy</span>
               </div>
-
             </div>
 
             <div className="panel-total">
-              <div className="total-label">
-                TOTAL PRICE
-              </div>
-
-              <div className="total-price">
-                ${selectedFlight.price}
-              </div>
+              <div className="total-label">TOTAL PRICE</div>
+              <div className="total-price">${selectedFlight.price}</div>
             </div>
 
             <div className="panel-actions">
-
               <button
                 className="btn-cancel-book"
                 onClick={() => setSelectedFlight(null)}
               >
                 Cancel
               </button>
-
               <button
                 className="btn-confirm-book"
-                onClick={() => window.location.href = '/booking'}
+                onClick={() => {
+                  setSelectedFlight(null);
+                  navigate('/booking');
+                }}
               >
                 Confirm
               </button>
-
             </div>
-
           </div>
         </>
       )}

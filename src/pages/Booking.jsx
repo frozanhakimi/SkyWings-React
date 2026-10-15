@@ -1,8 +1,6 @@
-
 import { useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import Topbar from '../components/Topbar';
-
 
 const initialBookings = [
   { id: 'SKW-12345', from: 'Kabul (KBL)', to: 'Dubai (DXB)', fromCode: 'KBL', toCode: 'DXB', fromCity: 'Kabul', toCity: 'Dubai', date: '15 Oct 2024', time: '08:00 AM', passenger: 'Frozan Hakimi', status: 'confirmed', tab: 'upcoming' },
@@ -20,7 +18,24 @@ function Booking() {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const filteredBookings = bookings.filter((b) => b.tab === activeTab);
+  // ✅ Search state
+  const [searchText, setSearchText] = useState('');
+
+  // ✅ Filtered bookings (tab + search)
+  const filteredBookings = bookings.filter((b) => {
+    const matchesTab = b.tab === activeTab;
+
+    const matchesSearch =
+      searchText === '' ||
+      b.id.toLowerCase().includes(searchText.toLowerCase()) ||
+      b.passenger.toLowerCase().includes(searchText.toLowerCase()) ||
+      b.from.toLowerCase().includes(searchText.toLowerCase()) ||
+      b.to.toLowerCase().includes(searchText.toLowerCase()) ||
+      b.fromCode.toLowerCase().includes(searchText.toLowerCase()) ||
+      b.toCode.toLowerCase().includes(searchText.toLowerCase());
+
+    return matchesTab && matchesSearch;
+  });
 
   const handleCancel = (id) => {
     if (window.confirm('Are you sure you want to cancel this booking?')) {
@@ -36,35 +51,35 @@ function Booking() {
     <>
       <Sidebar collapsed={collapsed} mobileOpen={mobileOpen} />
 
-<button
-  className="sidebar-toggle"
-  onClick={() => setCollapsed(!collapsed)}
->
-  ‹
-</button>
+      <button
+        className="sidebar-toggle"
+        onClick={() => setCollapsed(!collapsed)}
+        aria-label="Toggle sidebar"
+      >
+        ‹
+      </button>
 
-<div
-  className={`sidebar-overlay ${mobileOpen ? 'show' : ''}`}
-  onClick={() => setMobileOpen(false)}
-></div>
+      <div
+        className={`sidebar-overlay ${mobileOpen ? 'show' : ''}`}
+        onClick={() => setMobileOpen(false)}
+      ></div>
 
       <main className="main-content">
-       <Topbar pageTitle="Bookings" onMenuClick={() => setMobileOpen(true)} />
+        <Topbar pageTitle="Bookings" onMenuClick={() => setMobileOpen(true)} />
+
         {/* HERO */}
         <div className="page-hero">
           <div className="page-hero-content">
             <h2>My Bookings</h2>
             <p>View and manage all your flight reservations in one place</p>
-
             <div className="hero-search-form">
               <input
                 type="text"
-                placeholder="Search by Booking ID or Passenger Name"
+                placeholder="Search by Booking ID, Passenger or City"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
               />
-
-              <button className="btn-search">
-                SEARCH
-              </button>
+              <button className="btn-search">SEARCH</button>
             </div>
           </div>
         </div>
@@ -77,14 +92,12 @@ function Booking() {
           >
             Upcoming ({bookings.filter((b) => b.tab === 'upcoming').length})
           </button>
-
           <button
             className={`tab-btn ${activeTab === 'completed' ? 'active' : ''}`}
             onClick={() => setActiveTab('completed')}
           >
             Completed ({bookings.filter((b) => b.tab === 'completed').length})
           </button>
-
           <button
             className={`tab-btn ${activeTab === 'cancelled' ? 'active' : ''}`}
             onClick={() => setActiveTab('cancelled')}
@@ -93,45 +106,36 @@ function Booking() {
           </button>
         </div>
 
+        {/* Empty State */}
+        {filteredBookings.length === 0 && (
+          <div className="empty-state">
+            <h3>No bookings found</h3>
+            <p>Try changing your search or select another tab</p>
+          </div>
+        )}
+
         {/* BOOKING CARDS */}
         <div className="view-content active">
           {filteredBookings.map((booking) => (
             <div
               className="booking-card"
               key={booking.id}
-              style={
-                booking.status === 'cancelled'
-                  ? { opacity: 0.85 }
-                  : {}
-              }
+              style={booking.status === 'cancelled' ? { opacity: 0.85 } : {}}
             >
               <div className="booking-header">
-                <span>
-                  Booking ID: #{booking.id}
-                </span>
-
+                <span>Booking ID: #{booking.id}</span>
                 <span className={`status ${booking.status}`}>
                   {booking.status === 'confirmed' && 'Confirmed'}
                   {booking.status === 'completed' && 'Completed'}
                   {booking.status === 'cancelled' && 'Cancelled'}
                 </span>
               </div>
-
               <div className="booking-body">
                 <div className="booking-route">
-                  <h4>
-                    {booking.from} → {booking.to}
-                  </h4>
-
-                  <p>
-                    Date: {booking.date} | Time: {booking.time}
-                  </p>
-
-                  <p>
-                    Passenger: {booking.passenger}
-                  </p>
+                  <h4>{booking.from} → {booking.to}</h4>
+                  <p>Date: {booking.date} | Time: {booking.time}</p>
+                  <p>Passenger: {booking.passenger}</p>
                 </div>
-
                 <div className="booking-actions">
                   <button
                     className="btn-blue"
@@ -139,7 +143,6 @@ function Booking() {
                   >
                     View Ticket
                   </button>
-
                   {booking.tab === 'upcoming' && (
                     <button
                       className="btn-cancel"
@@ -155,7 +158,7 @@ function Booking() {
         </div>
 
         <div className="footer">
-          © 2024 SkyWings Airlines . Privacy Policy | Terms | Contact
+          © 2026, made with ❤️ by SkyWings Airlines for a better travel.
         </div>
       </main>
 
@@ -166,12 +169,9 @@ function Booking() {
             className="ticket-overlay show"
             onClick={() => setSelectedBooking(null)}
           ></div>
-
           <div className="ticket-panel show">
-
             <div className="ticket-header">
               <h3>✈ E-TICKET</h3>
-
               <button
                 className="close-ticket"
                 onClick={() => setSelectedBooking(null)}
@@ -181,83 +181,38 @@ function Booking() {
             </div>
 
             <div className="ticket-route">
-
               <div className="city">
-                <div className="code">
-                  {selectedBooking.fromCode}
-                </div>
-
-                <div className="name">
-                  {selectedBooking.fromCity}
-                </div>
+                <div className="code">{selectedBooking.fromCode}</div>
+                <div className="name">{selectedBooking.fromCity}</div>
               </div>
-
-              <div className="plane-icon">
-                ✈
-              </div>
-
+              <div className="plane-icon">✈</div>
               <div className="city">
-                <div className="code">
-                  {selectedBooking.toCode}
-                </div>
-
-                <div className="name">
-                  {selectedBooking.toCity}
-                </div>
+                <div className="code">{selectedBooking.toCode}</div>
+                <div className="name">{selectedBooking.toCity}</div>
               </div>
-
             </div>
 
             <div className="ticket-info">
-
               <div className="ticket-row">
-                <span className="label">
-                  Booking ID:
-                </span>
-
-                <span className="value">
-                  #{selectedBooking.id}
-                </span>
+                <span className="label">Booking ID:</span>
+                <span className="value">#{selectedBooking.id}</span>
               </div>
-
               <div className="ticket-row">
-                <span className="label">
-                  Passenger:
-                </span>
-
-                <span className="value">
-                  {selectedBooking.passenger}
-                </span>
+                <span className="label">Passenger:</span>
+                <span className="value">{selectedBooking.passenger}</span>
               </div>
-
               <div className="ticket-row">
-                <span className="label">
-                  Date:
-                </span>
-
-                <span className="value">
-                  {selectedBooking.date}
-                </span>
+                <span className="label">Date:</span>
+                <span className="value">{selectedBooking.date}</span>
               </div>
-
               <div className="ticket-row">
-                <span className="label">
-                  Time:
-                </span>
-
-                <span className="value">
-                  {selectedBooking.time}
-                </span>
+                <span className="label">Time:</span>
+                <span className="value">{selectedBooking.time}</span>
               </div>
-
             </div>
 
             <div className="ticket-footer">
-
-              <span className="status-badge">
-                Confirmed
-              </span>
-
+              <span className="status-badge">Confirmed</span>
               <div className="barcode">
                 <span style={{ height: '20px' }}></span>
                 <span style={{ height: '14px' }}></span>
@@ -272,9 +227,7 @@ function Booking() {
                 <span style={{ height: '14px' }}></span>
                 <span style={{ height: '18px' }}></span>
               </div>
-
             </div>
-
           </div>
         </>
       )}
