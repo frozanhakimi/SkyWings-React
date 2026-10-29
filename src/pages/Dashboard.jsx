@@ -147,6 +147,7 @@ function Dashboard() {
                 ))}
               </div>
             </div>
+            <button className="btn-blue">More Details</button>
           </div>
 
           {/* Card 4 - Flight Performance */}
