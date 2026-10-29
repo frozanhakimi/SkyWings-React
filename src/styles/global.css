@@ -4345,9 +4345,522 @@ body {
     background: #ffffff;
     overflow-y: auto;
 }
+/* =========================================
+   DARK MODE THEME - FINAL COMPLETE VERSION
+   ========================================= */
 
+/* 1. Main Background */
+body.dark-mode {
+    background: 
+        linear-gradient(rgba(9, 19, 26, 0.95), rgba(9, 19, 26, 0.95)),
+        url('/images/sky.jpeg') center/cover no-repeat fixed !important;
+    color: #f0fdf4 !important;
+}
 
+/* 2. Sidebar & Topbar */
+body.dark-mode .sidebar,
+body.dark-mode .topbar {
+    background: #112128 !important; 
+    border-color: #1f3a45 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
 
+/* 3. All Cards, Tables & Containers */
+body.dark-mode .card,
+body.dark-mode .pharmacy-table-container,
+body.dark-mode .shop-table-section,
+body.dark-mode .profile-container,
+body.dark-mode .safety-card,
+body.dark-mode .radar-chart-card,
+body.dark-mode .metric-card,
+body.dark-mode .twofa-wizard,
+body.dark-mode .quick-actions-card,
+body.dark-mode .skymiles-section,
+body.dark-mode .summary-card,
+body.dark-mode .billing-profile-card,
+body.dark-mode .session-card,
+body.dark-mode .live-flight-card,
+body.dark-mode .live-map-container,
+body.dark-mode .flight-card,
+body.dark-mode .flight-card-grid,
+body.dark-mode .booking-card,
+body.dark-mode .pharmacy-product-card,
+body.dark-mode .flight-stat-card,
+body.dark-mode .flight-filters,
+body.dark-mode .view-tabs,
+body.dark-mode .plan-card {
+    background: #112128 !important; 
+    border: 1px solid #2a4d5c !important; /* Visible borders */
+    color: #f0fdf4 !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 4. Hero Banners & Loyalty Card */
+body.dark-mode .page-hero,
+body.dark-mode .live-hero,
+body.dark-mode .safety-hero-new,
+body.dark-mode .loyalty-card {
+    background: linear-gradient(135deg, #112128 0%, #1a2e38 100%) !important;
+    border: 1px solid #2a4d5c !important;
+    color: #f0fdf4 !important;
+}
+
+/* 5. Sidebar Menu */
+body.dark-mode .menu a {
+    color: #94a3b8 !important;
+}
+body.dark-mode .menu a svg {
+    stroke: #94a3b8 !important;
+}
+body.dark-mode .menu a.active,
+body.dark-mode .menu a:hover {
+    background: #10b981 !important; 
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+}
+body.dark-mode .menu a.active svg,
+body.dark-mode .menu a:hover svg {
+    stroke: #ffffff !important;
+}
+
+/* 6. Main Headings */
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode .card-title,
+body.dark-mode .pharmacy-section-title,
+body.dark-mode .welcome-title,
+body.dark-mode .page-title,
+body.dark-mode .logo-area h1,
+body.dark-mode .logo-area span,
+body.dark-mode .stat-name,
+body.dark-mode .plan-card h4,
+body.dark-mode .flight-airline span,
+body.dark-mode .pharmacy-table-name,
+body.dark-mode .booking-header span:first-child {
+    color: #f0fdf4 !important;
+}
+
+/* 7. Secondary Text */
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode .stat-label,
+body.dark-mode .pharmacy-product-desc,
+body.dark-mode .pharmacy-product-vendor,
+body.dark-mode .flight-stat-card p,
+body.dark-mode .booking-route p,
+body.dark-mode .billing-label,
+body.dark-mode .summary-label,
+body.dark-mode .legend-item,
+body.dark-mode .plan-card li,
+body.dark-mode .miles-label,
+body.dark-mode .loyalty-label,
+body.dark-mode .pharmacy-table-sub,
+body.dark-mode .entries-control span {
+    color: #94a3b8 !important;
+}
+
+/* 8. Buttons (Blue to Green) */
+body.dark-mode .btn-blue,
+body.dark-mode .login-btn,
+body.dark-mode .btn-confirm-book,
+body.dark-mode .hero-search-form .btn-search,
+body.dark-mode .tab-btn.active,
+body.dark-mode .signup-btn,
+body.dark-mode .signin-submit,
+body.dark-mode .btn-buy-purple,
+body.dark-mode .btn-book-small {
+    background: #10b981 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+}
+
+body.dark-mode .btn-blue:hover,
+body.dark-mode .btn-buy-purple:hover,
+body.dark-mode .btn-book-small:hover {
+    background: #059669 !important;
+}
+
+/* 9. Prices, Numbers & Times (Blue to Green) */
+body.dark-mode .flight-price span,
+body.dark-mode .pharmacy-product-price,
+body.dark-mode .grid-price,
+body.dark-mode .miles-number,
+body.dark-mode .stat-card h4,
+body.dark-mode .flight-route .time,
+body.dark-mode .invoice-amount,
+body.dark-mode .summary-value,
+body.dark-mode .flight-id-cell,
+body.dark-mode .flight-price-cell {
+    color: #10b981 !important;
+}
+
+/* 10. Airport Codes (KBL, DXB) */
+body.dark-mode .route-code {
+    background: #1f3a45 !important;
+    color: #10b981 !important;
+}
+
+/* 11. Filter Labels */
+body.dark-mode .filter-group label {
+    color: #10b981 !important;
+}
+
+/* 12. Tables */
+body.dark-mode .pharmacy-table th,
+body.dark-mode .shop-table th {
+    color: #10b981 !important;
+    border-bottom: 2px solid #2a4d5c !important;
+}
+body.dark-mode .pharmacy-table td,
+body.dark-mode .shop-table td {
+    color: #e2e8f0 !important;
+    border-bottom: 1px solid #2a4d5c !important;
+}
+body.dark-mode .pharmacy-table tbody tr:hover,
+body.dark-mode .shop-table tbody tr:hover {
+    background: #1a2e38 !important;
+}
+
+/* 13. Status Badges */
+body.dark-mode .status.confirmed {
+    background: rgba(16, 185, 129, 0.2) !important;
+    color: #10b981 !important;
+    border: 1px solid #10b981 !important;
+}
+
+/* 14. Inputs & Selects */
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode .search-box input,
+body.dark-mode .entries-control select,
+body.dark-mode .search-control input,
+body.dark-mode .input-wrap input,
+body.dark-mode .signup-input-wrap input,
+body.dark-mode .filter-group select,
+body.dark-mode .filter-group input {
+    background: #09131a !important;
+    color: #f0fdf4 !important;
+    border: 1px solid #2a4d5c !important;
+}
+
+/* 15. Icons */
+body.dark-mode .user-actions svg,
+body.dark-mode .page-title svg,
+body.dark-mode .search-box svg,
+body.dark-mode .theme-toggle-btn {
+    color: #10b981 !important;
+}
+body.dark-mode .hamburger .line {
+    background-color: #10b981 !important;
+}
+
+/* 16. Side Panels & Dropdowns */
+body.dark-mode .booking-panel,
+body.dark-mode .ticket-panel,
+body.dark-mode .hamburger-dropdown,
+body.dark-mode .search-dropdown {
+    background: #112128 !important;
+    border: 1px solid #2a4d5c !important;
+}
+body.dark-mode .hamburger-dropdown a,
+body.dark-mode .search-dropdown a {
+    color: #f0fdf4 !important;
+    border-bottom: 1px solid #2a4d5c !important;
+}
+body.dark-mode .hamburger-dropdown a:hover,
+body.dark-mode .search-dropdown a:hover {
+    background: #1f3a45 !important;
+}
+
+/* =========================================
+   DARK MODE - LOGIN & SIGNUP PAGES
+   ========================================= */
+
+/* 17. Login & Signup Cards */
+body.dark-mode .signup-form-card,
+body.dark-mode .login-card {
+    background: #112128 !important;
+    border: 1px solid #2a4d5c !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode .form-header h2,
+body.dark-mode .login-card h2,
+body.dark-mode .signup-card-header h2 {
+    color: #f0fdf4 !important;
+}
+
+body.dark-mode .form-header p,
+body.dark-mode .signup-card-header p {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .form-header a,
+body.dark-mode .signup-card-header a {
+    color: #10b981 !important;
+}
+
+body.dark-mode .form-field > label,
+body.dark-mode .signup-field > label {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .input-wrap input:focus,
+body.dark-mode .signup-input-wrap input:focus {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1) !important;
+}
+
+body.dark-mode .field-icon {
+    color: #64748b !important;
+}
+
+body.dark-mode .terms-text,
+body.dark-mode .terms-checkbox .terms-text {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .terms-checkbox a {
+    color: #10b981 !important;
+}
+
+body.dark-mode .forgot-link {
+    color: #10b981 !important;
+}
+
+body.dark-mode .checkmark {
+    border-color: #2a4d5c !important;
+    background: #09131a !important;
+}
+
+body.dark-mode .terms-checkbox input:checked ~ .checkmark {
+    background: #10b981 !important;
+    border-color: #10b981 !important;
+}
+
+body.dark-mode .social-btn,
+body.dark-mode .signup-social-btn {
+    background: #09131a !important;
+    border-color: #2a4d5c !important;
+    color: #f0fdf4 !important;
+}
+
+body.dark-mode .social-btn:hover,
+body.dark-mode .signup-social-btn:hover {
+    background: #1f3a45 !important;
+}
+/* =========================================
+   DARK MODE - NOTIFICATIONS & PROGRESS FIX
+   ========================================= */
+body.dark-mode .notification-row.info {
+    background: rgba(59, 130, 246, 0.1) !important;
+    border-left-color: #3b82f6 !important;
+}
+body.dark-mode .notification-row.warning {
+    background: rgba(234, 179, 8, 0.1) !important;
+    border-left-color: #eab308 !important;
+}
+body.dark-mode .notification-row.success {
+    background: rgba(16, 185, 129, 0.1) !important;
+    border-left-color: #10b981 !important;
+}
+body.dark-mode .notification-content p {
+    color: #f0fdf4 !important; 
+}
+
+body.dark-mode .progress-bar {
+    background: #1f3a45 !important;
+}
+body.dark-mode .progress-fill {
+    background: #10b981 !important; 
+}
+/* =========================================
+   SHOPPING CART PANEL
+   ========================================= */
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 6000;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.35s;
+}
+
+.cart-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    max-width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+    z-index: 6001;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-panel.show {
+    transform: translateX(0);
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.cart-header h2 {
+    color: #1e3a8a;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.cart-close-btn {
+    background: #f3f4f6;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.cart-close-btn:hover {
+    background: #fee2e2;
+    color: #e11d48;
+}
+
+.cart-items-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.cart-item-icon {
+    width: 50px;
+    height: 50px;
+    background: #dbeafe;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-info h4 {
+    color: #1f2937;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.cart-item-info p {
+    color: #6b7280;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.cart-item-price {
+    color: #10b981;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #e5e7eb;
+    background: #f9fafb;
+}
+
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #1e3a8a;
+}
+
+.cart-checkout-btn {
+    width: 100%;
+    padding: 15px;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.cart-empty {
+    text-align: center;
+    color: #6b7280;
+    margin-top: 50px;
+}
+
+/* Cart Icon Badge */
+.cart-icon-wrapper {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #e11d48;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark Mode */
+body.dark-mode .cart-panel { background: #112128 !important; }
+body.dark-mode .cart-header, body.dark-mode .cart-footer { border-color: #1f3a45 !important; background: #112128 !important; }
+body.dark-mode .cart-header h2, body.dark-mode .cart-item-info h4, body.dark-mode .cart-total-row { color: #f0fdf4 !important; }
+body.dark-mode .cart-close-btn { background: #1f3a45; color: #f0fdf4; }
+body.dark-mode .cart-item { border-color: #1f3a45 !important; }
+body.dark-mode .cart-item-icon { background: #1f3a45; }
 
 /* =========================================
    RESPONSIVE — TABLET (1024px)
